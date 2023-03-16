@@ -1,0 +1,26 @@
+[package]
+name = "zeppelin-controller"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+kube = {version = "0.80.0", features = ["runtime", "derive"]}
+k8s-openapi = { version = "0.17.0", default-features = false, features = ["v1_21"] }
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9.19"
+serde_json = "1.0.94"
+schemars = { version = "0.8.11", features = ["chrono"] }
+chrono = "0.4.23"
+thiserror = "1.0.37"
+tokio = { version = "1.23.0", features = ["macros", "rt-multi-thread"] }
+futures = "0.3.25"
+
+[[bin]]
+name = "crdgen"
+path = "src/crdgen.rs"
+
+[lib]
+name = "controller"
+path = "src/lib.rs"
